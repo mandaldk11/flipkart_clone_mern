@@ -35,6 +35,18 @@ function CarouselItem() {
       id: 4,
       url: "https://rukminim1.flixcart.com/flap/3376/560/image/f6202f13b6f89b03.jpg?q=50",
     },
+    {
+      id: 5,
+      url: "https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/2e7473ee42442b3c.jpg?q=20",
+    },
+    {
+      id: 6,
+      url: "https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/b8e07ff39439d998.jpg?q=20",
+    },
+    {
+      id: 7,
+      url: "https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/bf4105ca2b58d3f2.jpg?q=20",
+    },
   ];
 
   return (
@@ -47,7 +59,7 @@ function CarouselItem() {
         responsive={responsive}
         ssr={true}
         infinite={true}
-        autoPlaySpeed={2000}
+        autoPlaySpeed={1000}
         keyBoardControl={true}
         customTransition="all .5"
         transitionDuration={500}
@@ -61,8 +73,7 @@ function CarouselItem() {
             <img
               src={item.url}
               alt="banner image"
-              width="100%"
-              height={"280px"}
+              style={{ width: "100%", height: "auto", maxHeight: "280px" }}
             />
           </div>
         ))}

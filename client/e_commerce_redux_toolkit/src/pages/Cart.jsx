@@ -94,20 +94,6 @@ function Cart() {
                                   src={product.image}
                                   style={{ width: "100px", height: "100px" }}
                                 />
-                                <div className="my-2 mx-2">
-                                  <button style={{ border: "1px solid grey" }}>
-                                    -
-                                  </button>
-                                  <button
-                                    className="mx-2"
-                                    style={{ border: "1px solid grey" }}
-                                  >
-                                    1
-                                  </button>
-                                  <button style={{ border: "1px solid grey" }}>
-                                    +
-                                  </button>
-                                </div>
                               </td>
                               <td rowSpan={2}>
                                 <b>{product.title.slice(0, 20)}...</b>
@@ -186,7 +172,7 @@ function Cart() {
             <div
               style={{
                 border: "1px solid grey",
-                height: "310px",
+                height: "3 rem",
                 width: "300px",
                 backgroundColor: "white",
               }}

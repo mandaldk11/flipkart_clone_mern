@@ -3,22 +3,24 @@ import "../App.css";
 import { IoSearchOutline } from "react-icons/io5";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchData } from "../store/ProductSlice";
+import { Link } from "react-router-dom";
 
 function Search() {
-  const products = useSelector((state) => state.product);
-  const [searchVal, setSearchVal] = useState("");
+  const { data: products } = useSelector((state) => state.product);
+  const [text, setText] = useState("");
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchData());
   }, [dispatch]);
 
-  // Check if products is an array, otherwise set filteredProducts to an empty array
-  const filteredProducts = Array.isArray(products)
-    ? products.filter((item) =>
-        item.title.longTitle.toLowerCase().includes(searchVal.toLowerCase())
-      )
-    : [];
+  const getText = (text) => {
+    setText(text);
+  };
+
+  const handleItemClick = () => {
+    setText("");
+  };
 
   return (
     <div>
@@ -27,6 +29,7 @@ function Search() {
           style={{
             position: "relative",
             display: "inline-block",
+            width: "100%", // Adjusted width to 100%
           }}
           className="my-2 searchInput"
         >
@@ -35,11 +38,12 @@ function Search() {
             placeholder={`Search for Products, Brands and More...`}
             aria-label="Search"
             style={{
-              width: "420px",
+              width: "350px", // Adjusted width to 100%
               paddingRight: "30px",
               padding: "5px",
             }}
-            onChange={(e) => setSearchVal(e.target.value)}
+            onChange={(e) => getText(e.target.value)}
+            value={text}
           />
           <IoSearchOutline
             size={25}
@@ -51,18 +55,36 @@ function Search() {
               color: "blue",
             }}
           />
+          {text && (
+            <ul
+              style={{
+                backgroundColor: "white",
+                listStyle: "none",
+                position: "absolute",
+                top: "100%", // Adjusted position to be below the input
+                left: 0,
+                width: "100%", // Adjusted width to 100%
+                zIndex: 1,
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Added box shadow for a better look
+                borderRadius: "4px", // Added border radius for a better look
+              }}
+            >
+              {products
+                .filter((product) =>
+                  product.title.toLowerCase().includes(text.toLowerCase())
+                )
+                .map((product) => (
+                  <li
+                    key={product.id}
+                    onClick={handleItemClick}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <Link to={`/product/${product.id}`}>{product.title}</Link>
+                  </li>
+                ))}
+            </ul>
+          )}
         </div>
-        {searchVal && (
-          <ul className="d-block">
-            {filteredProducts.length === 0 ? (
-              <li>No matching products found</li>
-            ) : (
-              filteredProducts.map((product) => (
-                <li key={product.id}>{product.title.longTitle}</li>
-              ))
-            )}
-          </ul>
-        )}
       </div>
     </div>
   );

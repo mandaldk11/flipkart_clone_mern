@@ -37,29 +37,27 @@ function CategoryCard() {
   ];
 
   return (
-    <div className="d-flex flex-wrap mx-4">
-      {navData.map((item, index) => {
-        return (
-          <>
-            <div style={{ width: "8rem", padding: "5px" }} key={index}>
-              <center>
-                <img
-                  className="_2puWtW _3a3qyb"
-                  alt="Grocery"
-                  src={item.url}
-                  height="64px"
-                  width="64px"
-                />
-              </center>
-              <div className="card-body">
-                <p className="card-text text-center">
-                  <b>{item.text}</b>
-                </p>
-              </div>
-            </div>
-          </>
-        );
-      })}
+    <div className="d-flex flex-wrap justify-content-center mx-2">
+      {navData.map((item, index) => (
+        <div key={index} className="category-card-container mx-4">
+          <center>
+            <img
+              className="category-image"
+              alt={item.text}
+              src={item.url}
+              height="64px"
+              width="64px"
+            />
+          </center>
+          <div className="card-body text-center">
+            <p className="card-text">
+              <p style={{ fontSize: "15px", fontWeight: "bold" }}>
+                {item.text}
+              </p>
+            </p>
+          </div>
+        </div>
+      ))}
     </div>
   );
 }

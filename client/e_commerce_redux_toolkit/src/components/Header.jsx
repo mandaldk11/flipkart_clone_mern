@@ -36,10 +36,9 @@ function Header() {
     };
     fetchData();
   }, []);
-
   return (
     <>
-      <header style={{ backgroundColor: "#2874f0" }} className="py-2">
+      <header style={{ backgroundColor: "#2874f0" }}>
         <div className="container">
           {data.map((item) => item.username)}
           <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -57,15 +56,7 @@ function Header() {
                 />
                 <p style={{ marginLeft: "20%", fontStyle: "italic" }}>
                   Explore
-                  <span style={{ color: "#FFE500" }}>
-                    Plus{" "}
-                    {/* <span>
-                      <img
-                        src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/plus_aef861.png"
-                        alt="sub logo"
-                      ></img>
-                    </span>{" "} */}
-                  </span>
+                  <span style={{ color: "#FFE500" }}>Plus </span>
                 </p>
               </div>
             </Link>
@@ -91,7 +82,7 @@ function Header() {
                   onMouseLeave={() => setShow(false)}
                   onClick={() => navigate("/login")}
                 >
-                  <div className="btn-group ">
+                  <div className="btn-group my-2">
                     <button
                       type="button"
                       className={`btn btn-primary dropdown-toggle ${
