@@ -1,0 +1,109 @@
+import React from "react";
+// import { add } from "../store/CartSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { STATUSES } from "../store/ProductSlice";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import { Link } from "react-router-dom";
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 2,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
+
+function Product() {
+  // const dispatch = useDispatch();
+  const { data: products, status } = useSelector((state) => state.product);
+  // const handleAdd = (product) => {
+  //   dispatch(add(product));
+  // };
+
+  if (status === STATUSES.LOADING) {
+    return <h3>Loading...</h3>;
+  }
+  if (status === STATUSES.ERROR) {
+    return <h3>something went wrong...</h3>;
+  }
+  return (
+    <>
+      <Carousel
+        swipeable={false}
+        draggable={false}
+        showDots={true}
+        responsive={responsive}
+        ssr={true} // means to render carousel on server-side.
+        infinite={true}
+        // autoPlay={this.props.deviceType !== "mobile" ? true : false}
+        autoPlaySpeed={1000}
+        keyBoardControl={true}
+        customTransition="all .5"
+        transitionDuration={500}
+        containerClass="carousel-container"
+        removeArrowOnDeviceType={["tablet", "mobile"]}
+        deviceType={this.props.deviceType}
+        dotListClass="custom-dot-list-style"
+        itemClass="carousel-item-padding-40-px"
+      >
+        {/* card */}
+        <div className="d-flex flex-wrap">
+          {products.map((product) => {
+            return (
+              <Link
+                to={`/product/${product.id}`}
+                style={{ textDecoration: "none" }}
+              >
+                <div
+                  className="card mx-2 my-2"
+                  style={{ width: "16rem" }}
+                  key={product.id}
+                >
+                  <img
+                    src={product.image}
+                    className="card-img-top"
+                    alt="..."
+                    height="240px"
+                    // width="10px"
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title">
+                      {product.title.slice(0, 20)}...{" "}
+                    </h5>
+
+                    <p className="card-text">
+                      {product.description.slice(0, 80)}...
+                    </p>
+                    <center>
+                      <b className="card-title">From {product.price}$ </b>
+                    </center>
+                    {/* <center>
+                <a
+                  href="#"
+                  className="btn "
+                  style={{ backgroundColor: "#ff9f00" }}
+                  onClick={() => handleAdd(product)}
+                >
+                  Add to Cart
+                </a>
+              </center> */}
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </Carousel>
+      ;
+    </>
+  );
+}
+
+export default Product;

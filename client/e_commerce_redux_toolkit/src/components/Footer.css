@@ -1,0 +1,41 @@
+.mainDiv{
+    height: 230px;
+    background-color:#172337;
+    font-family: cursive;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+
+}
+@media screen and (max-width: 420px) {
+    .mainDiv{
+        height: 450px;
+        padding: 20px;
+    }
+  }
+  @media screen and (max-width: 420px) {
+    .mainDiv{
+        height: 520px;
+        padding: 20px;
+    }
+  }
+  @media screen and (max-width: 940px) {
+    .mainDiv{
+        height: 480px;
+        padding: 30px;
+    }
+  }
+  @media screen and (max-width: 280px) {
+    .mainDiv{
+        height: 680px;
+        padding: 30px;
+    }
+  }
+  @media screen and (max-width: 360px) {
+    .mainDiv{
+        height: 680px;
+        padding: 30px;
+    }
+  }

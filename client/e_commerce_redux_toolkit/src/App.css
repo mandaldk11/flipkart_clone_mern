@@ -1,0 +1,173 @@
+.content{
+    width: 100%;
+}
+
+.mainImg{
+    fill: rgb(205, 218, 230);
+}
+
+.product-container {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .product-image {
+    /* width: 100%; */
+    /* height: auto; */
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .product-container:hover .product-image {
+    transform: scale(1.2);
+   
+  }
+  
+  .product-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* width: 100%; */
+    /* height: 100%; */
+    opacity: 0;
+    background-color: rgba(19, 16, 16, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.9s ease-in-out;
+  }
+  
+  .product-container:hover .product-overlay {
+    opacity: 1;
+  }
+  
+  .product-overlay-content {
+    color: #030303;
+    text-align: center;
+  }
+  
+  .custom-input-width{
+    width: 500px;
+    /* height: 300px; */
+  }
+
+  .addBtn{
+    padding: 18px 8px;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.2);
+    width: 98%;
+    border: none;
+    float: left;
+    background: var(--color-yellowish-orange);
+    color: white;
+}
+
+.mainContainer{
+  width: 100%;
+  height: 100%;
+  /* border: 2px solid red; */
+  display: flex;
+  flex-wrap: wrap;
+  /* align-items: center; */
+  justify-content: center;
+}
+
+.item1{
+  /* border: 2px solid rgb(20, 19, 19); */
+  height: 500px;
+  width: 300px;
+  background: #2874f0 url('https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/login_img_c4a81e.png') center 85% no-repeat;
+  color: #fff;
+  padding: 40px 33px;
+  font-size: 15px;
+}
+
+.paraItem1{
+  font-size: 18px;
+  margin-top: 16px;
+  line-height: 150%;
+  color: #dbdbdb;
+}
+.item2{
+  /* border: 2px solid rgb(20, 19, 19); */
+  height: 500px;
+  width: 400px;
+}
+  
+.item2Div{
+  padding: 10px 35px 10px;
+    position: relative;
+    background-color: #fff;
+}
+.item2Div2{
+  position: relative;
+    margin-bottom: 24px;
+    font-size: 15px;
+    color: gray;
+}
+/* .emailInput{
+  font-family: Roboto,Arial,sans-serif;
+  padding: 6px 8px 10px 0;
+  width: 100%;
+  height: 24px;
+  color: #000;
+  font-size: inherit;
+  background: #fff;
+  border: 1px solid white;
+  border-bottom: 1px solid #2874f0;
+}
+.emailInput:focus{
+  border:1px solid blue;
+  height: 28px;
+  padding: 5px;
+
+
+} */
+
+.emailInput {
+  display: block;
+  outline: none;
+  border: none;
+  height: 2em;
+  width: 300px;
+  font-size: 15px;
+  /* margin-bottom: 1px; */
+  border-bottom: 1px solid grey;
+}
+
+.emailInput:focus {
+  border-bottom: 1px solid #2874f0;
+  height: 3em;
+  color: #2874f0;
+ 
+}
+
+.tnc{
+  color: #878787;
+  font-size: 11px;
+  font-weight: 400;
+  width: 450px;
+}
+.loginBtn{
+  background: #fb641b;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,.2);
+  border: none;
+  color: #fff;
+  height: 48px;
+  width: 316px;
+}
+
+.outBtn{
+  color: #2874f0;
+  font-weight: 500;
+    background-color: #fff;
+    cursor: pointer;
+    border-radius: 2px;
+    height: 32px;
+    padding: 3px 20px;
+    border: 1px solid #dbdbdb;
+    /* margin-top: 5px; */
+}
+
+.searchInput:focus{
+  border: 1px solid #2874f0 ;
+}
