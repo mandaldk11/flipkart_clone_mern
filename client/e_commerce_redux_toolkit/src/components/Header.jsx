@@ -4,7 +4,7 @@ import "../App.css";
 import { RiAccountCircleLine } from "react-icons/ri";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { PiStorefrontBold } from "react-icons/pi";
-import { BsCart3 } from "react-icons/bs";
+import { BsCart3, BsDisplayportFill } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -15,32 +15,34 @@ import { BsCreditCard } from "react-icons/bs";
 import { BsBox } from "react-icons/bs";
 import { PiHeartStraight } from "react-icons/pi";
 import Search from "../pages/Search";
+
 // import { Link } from "react-router-dom";
 function Header() {
   const [data, setData] = useState([]);
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
+
   const isLoggedIn = !!localStorage.getItem("token");
-  const items = useSelector((state) => state.cart);
+  let items = useSelector((state) => state.cart);
 
   const signOutHandler = () => {
     localStorage.removeItem("token");
+    items = {};
     navigate("/login");
   };
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get("http://localhost:8080/users/allUsers");
-      const result = response.data;
-      setData(result);
-      console.log(result);
-    };
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const response = await axios.get("http://localhost:8080/users/allUsers");
+  //     const result = response.data;
+  //     setData(result);
+  //     console.log(result);
+  //   };
+  //   fetchData();
+  // }, []);
   return (
     <>
       <header style={{ backgroundColor: "#2874f0" }}>
         <div className="container">
-          {data.map((item) => item.username)}
           <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <Link
               to="/"
@@ -67,9 +69,9 @@ function Header() {
                 <Search />
               </li>
               {isLoggedIn ? (
-                <li>
+                <li className="my-2">
                   <button
-                    className="nav-item mx-4 my-3 outBtn"
+                    className="nav-item mx-4 my-2 outBtn"
                     onClick={signOutHandler}
                   >
                     Sign Out

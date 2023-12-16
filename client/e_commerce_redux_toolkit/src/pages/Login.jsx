@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../App.css";
 import axios from "axios";
 
@@ -129,9 +129,9 @@ function Login() {
                   <button className="loginBtn">Request OTP</button>
                 </div>
                 <div style={{ marginTop: "4.7rem" }}>
-                  <a href="/signup">
+                  <Link to="/signup">
                     <center> New to Flipkart? Create an account</center>
-                  </a>
+                  </Link>
                 </div>
               </form>
             </div>
