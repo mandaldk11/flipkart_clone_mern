@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
 import "./App.css";
 import SingleProduct from "./pages/SingleProduct";
@@ -14,7 +13,6 @@ function App() {
     <div style={{ backgroundColor: "#cee1ff36" }}>
       <BrowserRouter>
         <div className="">
-          {/* <Sidebar /> */}
           <Header />
           <div className="content">
             <Routes>
