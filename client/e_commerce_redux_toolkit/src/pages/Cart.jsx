@@ -5,6 +5,43 @@ import Emptycart from "../assets/Emptycart";
 import { FcApproval } from "react-icons/fc";
 import axios from "axios";
 
+// payment-
+export const handlePayment = async (amount) => {
+  const { data } = await axios.post("http://localhost:8080/payments/checkout", {
+    amount,
+  });
+  const { order } = data;
+  // get key
+  const {
+    data: { KEY },
+  } = await axios.get("http://localhost:8080/payments/getkey");
+
+  const options = {
+    key: KEY,
+    amount: order.amount,
+    currency: "INR",
+    name: "Dharmendra mandal",
+    description: "flipkart_clone_payment",
+    image: "https://github.com/settings/profile.png",
+    orderId: order.id,
+    callback_url: "http://localhost:8080/payments/paymentVerification",
+    prefill: {
+      name: "Dharmendra Mandal",
+      email: "mandaldk11@gmail.com",
+      contact: 6393572689,
+    },
+    notes: {
+      address: "razorpay corporate office",
+    },
+    theme: {
+      theme: "#3399cc",
+    },
+  };
+
+  const razor = new window.Razorpay(options);
+  razor.open();
+};
+
 function Cart() {
   const [totalAmt, setTotalAmt] = useState(0);
   const products = useSelector((state) => state.cart);
@@ -24,45 +61,6 @@ function Cart() {
   useEffect(() => {
     setTotalAmt(calculatedTotal);
   }, [calculatedTotal]);
-
-  // payment-
-  const handlePayment = async (amount) => {
-    const { data } = await axios.post(
-      "http://localhost:8080/payments/checkout",
-      { amount }
-    );
-    const { order } = data;
-    // get key
-    const {
-      data: { KEY },
-    } = await axios.get("http://localhost:8080/payments/getkey");
-    console.log(KEY);
-
-    const options = {
-      key: KEY,
-      amount: order.amount,
-      currency: "INR",
-      name: "Dharmendra mandal",
-      description: "flipkart_clone_payment",
-      image: "https://github.com/settings/profile.png",
-      orderId: order.id,
-      callback_url: "http://localhost:8080/payments/paymentVerification",
-      prefill: {
-        name: "Dharmendra Mandal",
-        email: "mandaldk11@gmail.com",
-        contact: 6393572689,
-      },
-      notes: {
-        address: "razorpay corporate office",
-      },
-      theme: {
-        theme: "#3399cc",
-      },
-    };
-
-    const razor = new window.Razorpay(options);
-    razor.open();
-  };
 
   return (
     <div className="container my-4 ">

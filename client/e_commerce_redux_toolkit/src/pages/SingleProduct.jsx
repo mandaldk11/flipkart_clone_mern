@@ -6,6 +6,7 @@ import { BsCart3 } from "react-icons/bs";
 import { AiFillThunderbolt } from "react-icons/ai";
 import { IoMdStarOutline } from "react-icons/io";
 import ReactImageMagnify from "react-image-magnify";
+import { handlePayment } from "./Cart";
 import "../App.css";
 
 function SingleProduct() {
@@ -178,7 +179,8 @@ function SingleProduct() {
             <button
               type="button"
               className="btn btn-danger addBtn mx-2"
-              onClick={() => handleAdd(product)}
+              style={{ backgroundColor: "#fb641b" }}
+              onClick={() => handlePayment(product.price)}
             >
               <AiFillThunderbolt size={30} /> Buy Now
             </button>

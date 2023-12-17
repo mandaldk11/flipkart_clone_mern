@@ -93,7 +93,7 @@ function SignUp() {
                     <span>Enter Username</span>
                   </label>
                   <input
-                    autocomplete="off"
+                    autoComplete="off"
                     type="text"
                     className="emailInput"
                     id="username"
@@ -114,7 +114,7 @@ function SignUp() {
                     <span>Enter Email</span>
                   </label>
                   <input
-                    autocomplete="off"
+                    autoComplete="off"
                     type="email"
                     className="emailInput"
                     id="email"
@@ -134,7 +134,7 @@ function SignUp() {
                     <span>Enter Phone</span>
                   </label>
                   <input
-                    autocomplete="off"
+                    autoComplete="off"
                     type="text"
                     className="emailInput"
                     id="phone"
@@ -154,7 +154,7 @@ function SignUp() {
                     <span>Enter Password</span>
                   </label>
                   <input
-                    autocomplete="off"
+                    autoComplete="off"
                     type="text"
                     className="emailInput"
                     id="password"

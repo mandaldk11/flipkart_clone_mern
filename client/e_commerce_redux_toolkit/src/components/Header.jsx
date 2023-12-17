@@ -28,6 +28,7 @@ function Header() {
   const signOutHandler = () => {
     localStorage.removeItem("token");
     items = {};
+    alert("sign out successfully...");
     navigate("/login");
   };
   // useEffect(() => {

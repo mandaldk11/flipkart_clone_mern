@@ -9,14 +9,14 @@ const checkout = async (req, res) => {
     };
 
     const order = await instance.orders.create(options);
-    console.log(order);
+    // console.log(order);
     res.status(200).json({ success: true, order });
   } catch (error) {
     console.log(error.message);
   }
 };
 const paymentVerification = async (req, res) => {
-  console.log(req.body, "....");
+  // console.log(req.body, "....");
   res.status(200).redirect("http://localhost:5173/");
 };
 const getKey = (req, res) => {
